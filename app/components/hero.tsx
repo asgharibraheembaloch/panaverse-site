@@ -46,7 +46,7 @@ const HeroSection = () => {
             spacing={5}
             textAlign="left"
           >
-            <chakra.h1 fontSize="4xl" lineHeight={1.2} fontWeight="bold">
+            <chakra.h1 fontSize="3xl" lineHeight={1.2} fontWeight="bold">
               Certified Web 3.0 and Metaverse Developer
             </chakra.h1>
             <chakra.h1
