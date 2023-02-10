@@ -66,7 +66,7 @@ export function Describe() {
   return (
     <Box pb='17px'mt='10px' mb='px' >
       {data.map((item, index) => (
-        <Box h='auto' as={'section'}  key={index} pb='17px' mt='10px' bg={item.color}>
+        <Box h='auto'  key={index} pb='17px' mt='10px' bg={item.color}>
           <Flex justifyContent='center' p={'10px'} direction={['column', 'column', 'row']} >
             {index % 2 === 0 ? (
               <>
