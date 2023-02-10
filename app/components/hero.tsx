@@ -72,7 +72,9 @@ const HeroSection = () => {
                 bg="green.400"
                 _hover={{ bg: "blue.600" }}
               >
-                Enroll Now
+                <Link color='white.500' href='https://www.piaic.org/' isExternal>
+                  Enroll Now
+                </Link>
               </chakra.button>
             </Stack>
           </Stack>

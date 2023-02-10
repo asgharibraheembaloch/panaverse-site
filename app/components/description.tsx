@@ -15,7 +15,7 @@ const data = [
     Citi stated in a March 2022 research paper that the metaverse economy might have a total addressable market \
     of up to $13 trillion and five billion people by 2030.",
     image: "/graphics/internet-day-concept-illustration/5118825.jpg",
-    color:'#D6F7E7'
+    color:'#E1F5EB'
   },
   {
     text: "The Program in a Nutshell: Earn While You Learn\
@@ -40,7 +40,7 @@ const data = [
     It employs a hybrid teaching format, with core onsite classes complemented by \
     online Zoom laboratories and recorded videos.",
     image: "/graphics/student-graduation-cap-using-computer-desk/21421.jpg",
-    color:'#FFCA56'
+    color:'#FFEABB'
   },
   {
     text: "The Outcome for Participants of the Program\
@@ -56,7 +56,7 @@ const data = [
     The Metaverse, Blockchain Gaming, and NFTs: Navigating the Internet’s Uncharted Waters\
     How To Become Metaverse Developer: Scope, Skills, and Salary",
     image: "/graphics/flat-design-business-people-working-together/6236932.jpg",
-    color:'#77C9D4'
+    color:'#CBEFF4'
   },
 ];
 
@@ -64,9 +64,9 @@ const data = [
 
 export function Describe() {
   return (
-    <Box pb='17px'mt='10px' mb='px' >
+    <Box >
       {data.map((item, index) => (
-        <Box h='auto'  key={index} pb='17px' mt='10px' bg={item.color}>
+        <Box h='auto'  key={index} bg={item.color}>
           <Flex justifyContent='center' p={'10px'} direction={['column', 'column', 'row']} >
             {index % 2 === 0 ? (
               <>
@@ -74,18 +74,22 @@ export function Describe() {
                   src={item.image}
                   width="330px"
                   height="284px"
+                  alt=""
+                  pr='10px'
                 />
-                <Text w="445px" height="306px" left="670px">
+                <Text maxW="600px" align='justify'>
                   {item.text}
                 </Text>
               </>
             ) : (
               <>
-                <Text w="445px" height="306px">{item.text}</Text>
+                <Text maxW="600px" align='justify'>{item.text}</Text>
                 <Image
                   src={item.image}
                   width="330px"
                   height="284px"
+                  alt=""
+                  pl='10px'
                 />
               </>
             )}

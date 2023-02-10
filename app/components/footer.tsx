@@ -1,56 +1,84 @@
 "use client"
 
-import { HStack, Icon, Text, StackProps, Box, Stack } from "@chakra-ui/react";
-import React, { ElementType } from "react";
 import {
-  PiaicSocial,
-  PanaverseSocial,
-  FacebookSocial,
-  YoutubeSocial,
-  GithubSocial,
-  TwitterSocial,
-} from "./icons";
+  Box,
+  chakra,
+  Container,
+  Stack,
+  Text,
+  useColorModeValue,
+  VisuallyHidden,
+} from '@chakra-ui/react';
+import { FaFacebook, FaGithub, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { PanaverseSocial, PiaicSocial } from './icons';
+import { ReactNode } from 'react';
 
-interface FeaturesProps extends StackProps {
-  icon: ElementType;
-}
-
-function Feature(props: FeaturesProps) {
-  const { icon, children, ...rest } = props;
+const SocialButton = ({
+  children,
+  label,
+  href,
+}: {
+  children: ReactNode;
+  label: string;
+  href: string;
+}) => {
   return (
-    <HStack {...rest} spacing="6" align="start">
-      <Icon as={icon} boxSize={["8", "8", "12"]} />
-      <Text textAlign="left" fontSize="lg" fontWeight="bold">
-        {children}
-      </Text>
-    </HStack>
+    <chakra.button
+      bg={useColorModeValue('blackAlpha.100', 'whiteAlpha.100')}
+      rounded={'full'}
+      w={8}
+      h={8}
+      cursor={'pointer'}
+      as={'a'}
+      href={href}
+      display={'inline-flex'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      transition={'background 0.3s ease'}
+      _hover={{
+        bg: useColorModeValue('blackAlpha.200', 'whiteAlpha.200'),
+      }}>
+      <VisuallyHidden>{label}</VisuallyHidden>
+      {children}
+    </chakra.button>
   );
-}
+};
 
-export function Social() {
+export default function SmallWithSocial() {
   return (
-    <Box>
-      <Stack
-      >
-        <Feature icon={PiaicSocial}>
-          Admission Website: https://www.piaic.org/
-        </Feature>
-        <Feature icon={PanaverseSocial}>
-          Syllabus and Community Website: https://www.panaverse.co/
-        </Feature>
-        <Feature icon={FacebookSocial}>
-          Facebook: https://www.facebook.com/groups/panaverse
-        </Feature>
-        <Feature icon={YoutubeSocial}>
-          YouTube Live Channel: https://www.youtube.com/@panaverse/streams
-        </Feature>
-        <Feature icon={GithubSocial}>
-          GitHub Repos: https://github.com/panaverse
-        </Feature>
-        <Feature icon={TwitterSocial}>
-          Twitter: https://twitter.com/Panaverse_edu
-        </Feature>
-      </Stack>
+    <Box
+      bg={useColorModeValue('gray.50', 'gray.900')}
+      color={useColorModeValue('gray.700', 'gray.200')}>
+      <Container
+        as={Stack}
+        maxW={'6xl'}
+        py={4}
+        direction={{ base: 'column', md: 'row' }}
+        spacing={4}
+        justify={{ base: 'center', md: 'space-between' }}
+        align={{ base: 'center', md: 'center' }}>
+        <Text>© 2023 Panaverse and PIAIC. All rights reserved</Text>
+        <Stack direction={'row'} spacing={6}>
+          <SocialButton label={'Twitter'} href={'https://twitter.com/Panaverse_edu'}>
+            <FaTwitter />
+          </SocialButton>
+          <SocialButton label={'YouTube'} href={'https://www.youtube.com/@panaverse/streams'}>
+            <FaYoutube />
+          </SocialButton>
+          <SocialButton label={'Facbook'} href={'https://www.facebook.com/groups/panaverse'}>
+            <FaFacebook />
+          </SocialButton>
+          <SocialButton label={'GitHub'} href={'https://github.com/panaverse'}>
+            <FaGithub />
+          </SocialButton>
+          <SocialButton label={'PIAIC'} href={'https://www.piaic.org/'}>
+            <PiaicSocial />
+          </SocialButton>
+          <SocialButton label={'Panaverse'} href={'https://www.panaverse.co/'}>
+            <PanaverseSocial />
+          </SocialButton>
+        </Stack>
+      </Container>
     </Box>
   );
 }
