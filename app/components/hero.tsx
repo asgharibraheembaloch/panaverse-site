@@ -1,148 +1,85 @@
-"use client"
+"use client";
 
-import React from 'react';
 import {
-    Box,
-    IconButton,
-    useBreakpointValue,
-    Stack,
-    Heading,
-    Text,
-    Container,
-} from '@chakra-ui/react';
-// Here we have used react-icons package for the icons
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-// And react-slick as our Carousel Lib
-import Slider from 'react-slick';
-import Link from 'next/link';
+  chakra,
+  Link,
+  Stack,
+  Box,
+  Button,
+  useColorModeValue,
+} from "@chakra-ui/react";
+// Here we have used react-icons package for the icon
+import { FaGithub } from "react-icons/fa";
+import { BsDiscord } from "react-icons/bs";
 
-// Settings for the slider
-const settings = {
-    dots: true,
-    arrows: false,
-    fade: true,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+const HeroSection = () => {
+  return (
+    <Box pb={8}>
+      <Stack
+        pos="relative"
+        bgGradient={`linear(to-l, green.500, green.400 , cyan.400)`}
+        height="250px"
+        w="100%"
+      ></Stack>
+      <Box
+        maxW="3xl"
+        p={4}
+        isolation="isolate"
+        zIndex={3}
+        mt="-10rem"
+        marginInline="auto"
+      >
+        <Box
+          boxShadow={useColorModeValue(
+            "0 4px 6px rgba(160, 174, 192, 0.6)",
+            "0 4px 6px rgba(9, 17, 28, 0.9)"
+          )}
+          bg={useColorModeValue("white", "gray.800")}
+          p={{ base: 4, sm: 8 }}
+          overflow="hidden"
+          rounded="2xl"
+        >
+          <Stack
+            pos="relative"
+            zIndex={1}
+            direction="column"
+            spacing={5}
+            textAlign="left"
+          >
+            <chakra.h1 fontSize="4xl" lineHeight={1.2} fontWeight="bold">
+              Certified Web 3.0 and Metaverse Developer
+            </chakra.h1>
+            <chakra.h1
+              color="gray.400"
+              fontSize="xl"
+              maxW="600px"
+              lineHeight={1.2}
+            >
+              A One and Quarter Years Panaverse DAO Earn
+              as you Learn Program Getting Ready for the Next Generation of the
+              Internet Consolidating Web 3.0, Metaverse, Artificial Intelligence
+              (AI), Cloud, Edge, Ambient Computing/IoT, Network Automation, and
+              Bioinformatics Technologies.
+            </chakra.h1>
+            <Stack direction={{ base: "column", md: "row" }} spacing={3} alignItems='center' justifyContent='center'>
+              <chakra.button
+                h={10}
+                px={6}
+                color="white"
+                fontSize="md"
+                rounded="md"
+                lineHeight={1}
+                bg="green.400"
+                _hover={{ bg: "blue.600" }}
+              >
+                Enroll Now
+              </chakra.button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Box>
+    </Box>
+  );
 };
 
-export default function CaptionCarousel() {
-    // As we have used custom buttons, we need a reference variable to
-    // change the state
-    const [slider, setSlider] = React.useState<Slider | null>(null);
-
-    // These are the breakpoints which changes the position of the
-    // buttons as the screen size changes
-    const top = useBreakpointValue({ base: '90%', md: '50%' });
-    const side = useBreakpointValue({ base: '30%', md: '40px' });
-
-    // This list contains all the data for carousels
-    // This can be static or loaded from a server
-    const cards = [
-        {
-            title: 'Design Projects 1',
-            text:
-                "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-        },
-        {
-            title: 'Design Projects 2',
-            text:
-                "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
-        },
-        {
-            title: 'Design Projects 3',
-            text:
-                "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-        },
-    ];
-
-    return (
-        <Box
-            position={'relative'}
-            height={'300px'}
-            width={'full'}
-            overflow={'hidden'}>
-            {/* CSS files for react-slick */}
-            <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-            />
-            <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-            />
-            {/* Left Icon */}
-            <IconButton
-                aria-label="left-arrow"
-                variant="ghost"
-                position="absolute"
-                left={side}
-                top={top}
-                transform={'translate(0%, -50%)'}
-                zIndex={2}
-                onClick={() => slider?.slickPrev()}>
-                <BiLeftArrowAlt size="40px" />
-            </IconButton>
-            {/* Right Icon */}
-            <IconButton
-                aria-label="right-arrow"
-                variant="ghost"
-                position="absolute"
-                right={side}
-                top={top}
-                transform={'translate(0%, -50%)'}
-                zIndex={2}
-                onClick={() => slider?.slickNext()}>
-                <BiRightArrowAlt size="40px" />
-            </IconButton>
-            {/* Slider */}
-            <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {cards.map((card, index) => (
-                    <Box
-                        key={index}
-                        height={'6xl'}
-                        position="relative"
-                        backgroundPosition="center"
-                        backgroundRepeat="no-repeat"
-                        backgroundSize="cover"
-                        backgroundImage={`url(${card.image})`}>
-                        {/* This is the block you need to change, to customize the caption */}
-                        <Container size="container.lg" height="300px" position="relative">
-                            <Stack
-                                spacing={6}
-                                w={'full'}
-                                maxW={'lg'}
-                                position="absolute"
-                                top="50%"
-                                transform="translate(0, -50%)">
-                                <Heading fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}>
-                                    Certified Web 3.0 and Metaverse Developer
-                                </Heading>
-                                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                                <Link href='https://www.piaic.org'>www.piaic.org </Link> <br/>                                
-                                    A One and Quarter Years Panaverse DAO Earn as you Learn Program
-                                    Getting Ready for the Next Generation of the Internet
-                                    Consolidating Web 3.0, Metaverse, Artificial Intelligence (AI), 
-                                    Cloud, Edge, Ambient Computing/IoT, Network Automation, and Bioinformatics Technologies<br/>
-                                    The Panaverse Community and Syllabus: <Link href='https://www.panaverse.co'>www.panaverse.co</Link>
-                                </Text>
-                            </Stack>
-                        </Container>
-                    </Box>
-                ))}
-            </Slider>
-        </Box>
-    );
-}
+export default HeroSection;

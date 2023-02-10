@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Box, Image, Text, HStack } from "@chakra-ui/react";
+import { Box, Image, Text, HStack, Flex } from "@chakra-ui/react";
 
 const data = [
   {
@@ -15,6 +15,7 @@ const data = [
     Citi stated in a March 2022 research paper that the metaverse economy might have a total addressable market \
     of up to $13 trillion and five billion people by 2030.",
     image: "/graphics/internet-day-concept-illustration/5118825.jpg",
+    color:'#D6F7E7'
   },
   {
     text: "The Program in a Nutshell: Earn While You Learn\
@@ -23,6 +24,7 @@ const data = [
     begin doing so within six months of the program's beginning. \
     It resembles a cross between a corporate venture and an educational project.",
     image: "/graphics/poster-student-loans-scholarship/STUDIO PC 2072-20.jpg",
+    color:'#CCD2EC'
   },
   {
     text: "Program of Studies\
@@ -38,6 +40,23 @@ const data = [
     It employs a hybrid teaching format, with core onsite classes complemented by \
     online Zoom laboratories and recorded videos.",
     image: "/graphics/student-graduation-cap-using-computer-desk/21421.jpg",
+    color:'#FFCA56'
+  },
+  {
+    text: "The Outcome for Participants of the Program\
+    The graduates of this program will own products \
+    (Full-Stack App Templates, AR and VR Experiences, and APIs) \
+    that are marketed globally by the Panaverse DAO and, if they like, \
+    will also be able to start off by offering services at a rate of $50 per hour ($96,000 per year). \
+    This would give Pakistani professionals and students a fantastic opportunity to better their financial \
+    situation while also giving the economy a much-needed boost by expanding software exports.\
+    Top 5 'Metaverse' jobs that will rule the future of tech industry\
+    Blockchain Developer Salary - Jun 2022\
+    Web3 Salaries Soar to $750,000 for Rank-and-File Devs\
+    The Metaverse, Blockchain Gaming, and NFTs: Navigating the Internet’s Uncharted Waters\
+    How To Become Metaverse Developer: Scope, Skills, and Salary",
+    image: "/graphics/flat-design-business-people-working-together/6236932.jpg",
+    color:'#77C9D4'
   },
 ];
 
@@ -45,10 +64,10 @@ const data = [
 
 export function Describe() {
   return (
-    <Box pl='325px' pb='17px'mt='10px' mb='px'>
+    <Box pb='17px'mt='10px' mb='px' >
       {data.map((item, index) => (
-        <Box key={index} pb='17px' mt='10px'>
-          <HStack>
+        <Box h='auto' as={'section'}  key={index} pb='17px' mt='10px' bg={item.color}>
+          <Flex justifyContent='center' p={'10px'} direction={['column', 'column', 'row']} >
             {index % 2 === 0 ? (
               <>
                 <Image
@@ -70,7 +89,7 @@ export function Describe() {
                 />
               </>
             )}
-          </HStack>
+          </Flex>
         </Box>
       ))}
     </Box>
